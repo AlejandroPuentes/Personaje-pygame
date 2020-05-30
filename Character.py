@@ -1,44 +1,27 @@
-from Factory import WarriorFactory, WizardFactory, MonsterFactory
+import pygame
+from pygame import *
 
-class CharacterBuilder:
 
 
-    def __init__(self):
-        self.Character = None
-        self.fabrica = None
-
-    def buildLeft(self):
-        pass
-
-    def buildUp(self):
-        pass
-
-    def buildRight(self):
-        pass
-
-    def buildDown(self):
-        pass
-
-    def buildJump(self):
-        pass
-
-    def getCharacter(self):
-        return self.Character
-
-class Character:
+class Character(pygame.sprite.Sprite):
 
     def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
         self.left = None
         self.right = None
         self.down = None
         self.up = None
         self.jump = None
+        self.vel = 1
+        self.dir = 0
+        self.images = None
+        self.current = 0
 
     def setLeft(self, left):
         self.left = left
 
     def setUp(self, up):
-        self.up = up.getImage()
+        self.up = up
 
     def setRight(self, right):
         self.right = right
@@ -61,91 +44,55 @@ class Character:
     def getJump(self):
         return self.jump
 
+    def setVel(self, velocity):
+        self.vel = velocity
 
+    def getSurfaces(self, images):
+        surfaces = []
+        for image in images:
+            surfaces.append(pygame.image.load(image))
 
+        return surfaces
 
-class WarriorBuilder(CharacterBuilder):
-
-    def __init__(self):
-        self.Character = Character()
-        self.fabrica = WarriorFactory()
-
-    def buildUp(self):
-        self.Character.setUp(self.fabrica.createUpState())
-
-    def buildRight(self):
-        self.Character.setRight(self.fabrica.createRightState())
-
-    def buildDown(self):
-        self.Character.setDown(self.fabrica.createDownState())
-
-    def buildLeft(self):
-        self.Character.setLeft(self.fabrica.createLeftState())
-
-    def buildJump(self):
-        self.Character.setJump(self.fabrica.createJumpState())
-
-
-
-class WizardBuilder(CharacterBuilder):
-
-    def __init__(self):
-        self.Character = Character()
-        self.fabrica = WizardFactory()
-
-    def buildUp(self):
-        self.Character.setUp(self.fabrica.createUpState())
-
-    def buildRight(self):
-        self.Character.setRight(self.fabrica.createRightState())
-
-    def buildDown(self):
-        self.Character.setDown(self.fabrica.createDownState())
-
-    def buildLeft(self):
-        self.Character.setLeft(self.fabrica.createLeftState())
-
-    def buildJump(self):
-        self.Character.setJump(self.fabrica.createJumpState())
-
-
-
-class MonsterBuilder(CharacterBuilder):
-
-    def __init__(self):
-        self.Character = Character()
-        self.fabrica = MonsterFactory()
-
-    def buildUp(self):
-        self.Character.setUp(self.fabrica.createUpState())
-
-    def buildRight(self):
-        self.Character.setRight(self.fabrica.createRightState())
-
-    def buildDown(self):
-        self.Character.setDown(self.fabrica.createDownState())
-
-    def buildLeft(self):
-        self.Character.setLeft(self.fabrica.createLeftState())
-
-    def buildJump(self):
-        self.Character.setJump(self.fabrica.createJumpState())
+    #i r !
+    def loadImages(self):
+        self.images = []
+        self.images.append(self.getSurfaces(self.right.getImage()))
+        self.images.append(self.getSurfaces(self.left.getImage()))
+        self.images.append(self.getSurfaces(self.down.getImage()))
+        self.images.append(self.getSurfaces(self.up.getImage()))
+        self.images.append(self.getSurfaces(self.jump.getImage()))
+        self.image = self.images[self.dir][self.current]
+        self.rect = self.image.get_rect()
 
     
-class CharacterManager:
 
-    def __init__(self):
-        self.builder = None
+    def update(self):       
+        keys = pygame.key.get_pressed()
+        if keys[K_LEFT]:
+            self.rect.left -= self.vel
+            self.dir = 1
+        elif keys[K_RIGHT]:
+            self.rect.left += self.vel
+            self.dir = 0
+        if keys[K_UP]:
+            self.rect.top -= self.vel
+            self.dir = 3
+        elif keys[K_DOWN]:
+            self.rect.top += self.vel
+            self.dir = 2
+        if keys[K_LEFT] or keys[K_RIGHT] or keys[K_UP] or keys[K_DOWN]:
+            self.image = self.images[self.dir][self.current]
+            self.current += 1
+            self.current %= 3
 
-    def setBuilder(self, builder):
-        self.builder = builder
+    def draw(self, screen):
+        screen.blit(self.image, self.rect)
 
-    def buildCharacter(self):
-        self.builder.buildJump()
-        self.builder.buildLeft()
-        self.builder.buildRight()
-        self.builder.buildUp()
-        self.builder.buildDown()
+    def place(self, pos):
+        self.rect.x = pos[0]
+        self.rect.y = pos[1]
 
-    def getCharacter(self):
-        return self.builder.getCharacter()
+    def getPos(self):
+        return self.rect.x, self.rect.y
+

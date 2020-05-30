@@ -45,7 +45,7 @@ class WizardFactory(CharacterFactory):
         return WizardUpState()
 
     def createRightState(self):
-        return WizardRightState
+        return WizardRightState()
 
     def createDownState(self):
         return WizardDownState()
