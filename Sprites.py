@@ -113,7 +113,7 @@ class JumpState:
 class WarriorJumpState(JumpState):
 
     def __init__(self):
-        self.image =  ['Static/izq.png', 'Static/izq1.png', 'Static/izq.png']
+        self.image =  ['Static/salto1.png', 'Static/salto2.png', 'Static/salto3.png']
 
 class WizardJumpState(JumpState):
 
