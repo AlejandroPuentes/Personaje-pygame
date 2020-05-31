@@ -23,7 +23,7 @@ class WizardLeftState(LeftState):
 class MonsterLeftState(LeftState):
 
     def __init__(self):
-        self.image = 'imageMonsterLS'
+        self.image =['Static/Wizquierda.png', 'Static/Wizquierda2.png', 'Static/Wizquierda.png']
 
 #Estado hacia derecha
 class RightState:
@@ -48,7 +48,7 @@ class WizardRightState(RightState):
 class MonsterRightState(RightState):
 
     def __init__(self):
-        self.image = 'imageMonsterRS'
+        self.image = ['Static/Mderecha.png', 'Static/Mderecha2.png', 'Static/Mderecha.png']
 
 #Estado hacia arriba
 class UpState:
@@ -73,7 +73,7 @@ class WizardUpState(UpState):
 class MonsterUpState(UpState):
 
     def __init__(self):
-        self.image = 'imageMonsterUS'
+        self.image = ['Static/Warriba.png', 'Static/Warriba2.png', 'Static/Warriba.png']
 
 #Estado hacia abajo
 class DownState:
@@ -98,7 +98,7 @@ class WizardDownState(DownState):
 class MonsterDownState(DownState):
 
     def __init__(self):
-        self.image = 'imageMonsterDS'
+        self.image = ['Static/Wabajo.png', 'Static/Wabajo2.png', 'Static/Wabajo.png']
 
 #Estado salto
 class JumpState:
@@ -123,4 +123,4 @@ class WizardJumpState(JumpState):
 class MonsterJumpState(JumpState):
 
     def __init__(self):
-        self.image = 'imageMonsterJS'
+        self.image = ['Static/Wizquierda.png', 'Static/Wizquierda2.png', 'Static/Wizquierda.png']

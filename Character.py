@@ -12,7 +12,7 @@ class Character(pygame.sprite.Sprite):
         self.down = None
         self.up = None
         self.jump = None
-        self.vel = 1
+        self.vel = 5
         self.dir = 0
         self.images = None
         self.current = 0
@@ -79,7 +79,7 @@ class Character(pygame.sprite.Sprite):
             self.rect.top -= self.vel
             self.dir = 3
         elif keys[K_DOWN]:
-            self.rect.top += self.vel
+            self.rect.top += self.vel            
             self.dir = 2
         if keys[K_LEFT] or keys[K_RIGHT] or keys[K_UP] or keys[K_DOWN]:
             self.image = self.images[self.dir][self.current]
