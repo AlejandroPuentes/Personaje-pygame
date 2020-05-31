@@ -63,7 +63,7 @@ class MonsterFactory(CharacterFactory):
         return MonsterUpState()
 
     def createRightState(self):
-        return MonsterRightState
+        return MonsterRightState()
 
     def createDownState(self):
         return MonsterDownState()
