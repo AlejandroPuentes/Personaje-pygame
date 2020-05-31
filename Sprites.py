@@ -88,7 +88,7 @@ class DownState:
 class WarriorDownState(DownState):
 
     def __init__(self):
-        self.image = 'imageWarriorDS'
+        self.image = ['Static/LeftWzFL.png', 'Static/LeftWzM.png', 'Static/LeftWzFL.png']
 
 class WizardDownState(DownState):
 

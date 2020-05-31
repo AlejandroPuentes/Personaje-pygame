@@ -28,7 +28,7 @@ class WarriorFactory(CharacterFactory):
         return WarriorUpState()
 
     def createRightState(self):
-        return WarriorRightState
+        return WarriorRightState()
 
     def createDownState(self):
         return WarriorDownState()
