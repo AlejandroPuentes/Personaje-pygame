@@ -7,7 +7,7 @@ CENTER = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
 BLACK = 0,0,0
 
 manager = CharacterManager()
-manager.setBuilder(WizardBuilder())
+manager.setBuilder(WarriorBuilder())
 manager.buildCharacter()
 character = manager.getCharacter()
 
