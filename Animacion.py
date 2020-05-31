@@ -27,4 +27,5 @@ while playing:
     character.update()
     print(character.getPos())
     character.draw(screen)
+    pygame.time.delay(50)
     pygame.display.flip()

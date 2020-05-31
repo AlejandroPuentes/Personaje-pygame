@@ -90,6 +90,8 @@ class WarriorDownState(DownState):
     def __init__(self):
         self.image =  ['Static/abaj.png', 'Static/abaj1.png', 'Static/abaj.png']
 
+        
+
 class WizardDownState(DownState):
 
     def __init__(self):
@@ -118,7 +120,7 @@ class WarriorJumpState(JumpState):
 class WizardJumpState(JumpState):
 
     def __init__(self):
-        self.image = ['Static/RightWzFL.png', 'Static/JumpRWzM.png', 'Static/RightWzFL.png']
+        self.image = ['Static/UpWzFL.png', 'Static/UpWzM.png', 'Static/UpWzFL.png']
 
 class MonsterJumpState(JumpState):
 
