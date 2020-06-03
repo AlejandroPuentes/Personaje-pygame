@@ -82,7 +82,8 @@ class Character(pygame.sprite.Sprite):
         elif keys[K_DOWN]:
             self.rect.top += self.vel            
             self.dir = 2
-        if keys[K_LEFT] or keys[K_RIGHT] or keys[K_UP] or keys[K_DOWN]:
+        
+        if keys[K_LEFT] or keys[K_RIGHT] or keys[K_UP] or keys[K_DOWN] or keys[K_SPACE]:
             self.image = self.images[self.dir][self.current]
             self.current += 1
             self.current %= 3
