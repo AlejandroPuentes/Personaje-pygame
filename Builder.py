@@ -6,7 +6,7 @@ class CharacterBuilder:
 
     def __init__(self):
         self.Character = None
-        self.fabrica = None
+        self.factory = None
 
     def buildLeft(self):
         pass
@@ -31,22 +31,22 @@ class WarriorBuilder(CharacterBuilder):
 
     def __init__(self):
         self.Character = Character()
-        self.fabrica = WarriorFactory()
+        self.factory = WarriorFactory()
 
     def buildUp(self):
-        self.Character.setUp(self.fabrica.createUpState())
+        self.Character.setUp(self.factory.createUpState())
 
     def buildRight(self):
-        self.Character.setRight(self.fabrica.createRightState())
+        self.Character.setRight(self.factory.createRightState())
 
     def buildDown(self):
-        self.Character.setDown(self.fabrica.createDownState())
+        self.Character.setDown(self.factory.createDownState())
 
     def buildLeft(self):
-        self.Character.setLeft(self.fabrica.createLeftState())
+        self.Character.setLeft(self.factory.createLeftState())
 
     def buildJump(self):
-        self.Character.setJump(self.fabrica.createJumpState())
+        self.Character.setJump(self.factory.createJumpState())
 
 
 
@@ -54,22 +54,22 @@ class WizardBuilder(CharacterBuilder):
 
     def __init__(self):
         self.Character = Character()
-        self.fabrica = WizardFactory()
+        self.factory = WizardFactory()
 
     def buildUp(self):
-        self.Character.setUp(self.fabrica.createUpState())
+        self.Character.setUp(self.factory.createUpState())
 
     def buildRight(self):
-        self.Character.setRight(self.fabrica.createRightState())
+        self.Character.setRight(self.factory.createRightState())
 
     def buildDown(self):
-        self.Character.setDown(self.fabrica.createDownState())
+        self.Character.setDown(self.factory.createDownState())
 
     def buildLeft(self):
-        self.Character.setLeft(self.fabrica.createLeftState())
+        self.Character.setLeft(self.factory.createLeftState())
 
     def buildJump(self):
-        self.Character.setJump(self.fabrica.createJumpState())
+        self.Character.setJump(self.factory.createJumpState())
 
 
 
@@ -77,22 +77,22 @@ class MonsterBuilder(CharacterBuilder):
 
     def __init__(self):
         self.Character = Character()
-        self.fabrica = MonsterFactory()
+        self.factory = MonsterFactory()
 
     def buildUp(self):
-        self.Character.setUp(self.fabrica.createUpState())
+        self.Character.setUp(self.factory.createUpState())
 
     def buildRight(self):
-        self.Character.setRight(self.fabrica.createRightState())
+        self.Character.setRight(self.factory.createRightState())
 
     def buildDown(self):
-        self.Character.setDown(self.fabrica.createDownState())
+        self.Character.setDown(self.factory.createDownState())
 
     def buildLeft(self):
-        self.Character.setLeft(self.fabrica.createLeftState())
+        self.Character.setLeft(self.factory.createLeftState())
 
     def buildJump(self):
-        self.Character.setJump(self.fabrica.createJumpState())
+        self.Character.setJump(self.factory.createJumpState())
 
     
 class CharacterManager:

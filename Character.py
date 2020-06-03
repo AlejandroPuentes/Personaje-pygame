@@ -17,7 +17,7 @@ class Character(pygame.sprite.Sprite):
         self.images = None
         self.current = 0
         self.salto = False
-
+        self.delta = 200
     def setLeft(self, left):
         self.left = left
 
@@ -87,12 +87,12 @@ class Character(pygame.sprite.Sprite):
             self.current += 1
             self.current %= 3
         if self.salto:
-            self.rect.top += 200
+            self.rect.top += self.delta
             self.salto = False
             self.dir = 0
         else:
             if keys[K_SPACE]:
-                self.rect.top -= 200
+                self.rect.top -= self.delta
                 self.dir = 4
                 self.salto = True
 
