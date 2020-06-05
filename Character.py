@@ -1,5 +1,6 @@
 import pygame
 from pygame import *
+from Util import loadImages
 
 
 
@@ -18,6 +19,7 @@ class Character(pygame.sprite.Sprite):
         self.current = 0
         self.salto = False
         self.delta = 200
+
     def setLeft(self, left):
         self.left = left
 
@@ -48,21 +50,13 @@ class Character(pygame.sprite.Sprite):
     def setVel(self, velocity):
         self.vel = velocity
 
-    def getSurfaces(self, images):
-        surfaces = []
-        for image in images:
-            surfaces.append(pygame.image.load(image))
-
-        return surfaces
-
-    #i r !
-    def loadImages(self):
+    def setImages(self):
         self.images = []
-        self.images.append(self.getSurfaces(self.right.getImage()))
-        self.images.append(self.getSurfaces(self.left.getImage()))
-        self.images.append(self.getSurfaces(self.down.getImage()))
-        self.images.append(self.getSurfaces(self.up.getImage()))
-        self.images.append(self.getSurfaces(self.jump.getImage()))
+        self.images.append(loadImages(self.right.getImage()))
+        self.images.append(loadImages(self.left.getImage()))
+        self.images.append(loadImages(self.down.getImage()))
+        self.images.append(loadImages(self.up.getImage()))
+        self.images.append(loadImages(self.jump.getImage()))
         self.image = self.images[self.dir][self.current]
         self.rect = self.image.get_rect()
 
@@ -82,7 +76,6 @@ class Character(pygame.sprite.Sprite):
         elif keys[K_DOWN]:
             self.rect.top += self.vel            
             self.dir = 2
-        
         if keys[K_LEFT] or keys[K_RIGHT] or keys[K_UP] or keys[K_DOWN] or keys[K_SPACE]:
             self.image = self.images[self.dir][self.current]
             self.current += 1
@@ -90,11 +83,9 @@ class Character(pygame.sprite.Sprite):
         if self.salto:
             self.rect.top += self.delta
             self.salto = False
-            self.dir = 0
         else:
             if keys[K_SPACE]:
                 self.rect.top -= self.delta
-                self.dir = 4
                 self.salto = True
 
 

@@ -26,6 +26,9 @@ class CharacterBuilder:
     def getCharacter(self):
         return self.Character
 
+    def setImages(self):
+        self.Character.setImages()
+
 
 class WarriorBuilder(CharacterBuilder):
 
@@ -109,7 +112,7 @@ class CharacterManager:
         self.builder.buildRight()
         self.builder.buildUp()
         self.builder.buildDown()
-        self.builder.getCharacter().loadImages()
+        self.builder.setImages()
 
     def getCharacter(self):
         return self.builder.getCharacter()

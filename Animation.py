@@ -5,9 +5,10 @@ SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 1000
 CENTER = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2) 
 BLACK = 0,0,0
+DELAY = 100
 
 manager = CharacterManager()
-manager.setBuilder(MonsterBuilder())
+manager.setBuilder(WizardBuilder())
 manager.buildCharacter()
 character = manager.getCharacter()
 
@@ -27,5 +28,5 @@ while playing:
     character.update()
     print(character.getPos())
     character.draw(screen)
-    pygame.time.delay(100)
+    pygame.time.delay(DELAY)
     pygame.display.flip()
